@@ -1,0 +1,6 @@
+clickable_minimum_required: 7.1.2
+builder: cmake
+kill: cide
+framework: ubuntu-sdk-20.04
+dependencies_target:
+- 'gcc'

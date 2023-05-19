@@ -1,0 +1,15 @@
+{
+    "name": "cide.ikozyris",
+    "description": "An ultra-simple C/C++ IDE",
+    "architecture": "@CLICK_ARCH@",
+    "title": "C IDE",
+    "hooks": {
+        "cide": {
+            "apparmor": "cide.apparmor",
+            "desktop":  "cide.desktop"
+        }
+    },
+    "version": "@BUILD_VERSION@",
+    "maintainer": "ikozyris <none@none.none>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}
