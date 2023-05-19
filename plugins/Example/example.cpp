@@ -28,7 +28,7 @@ Example::Example() {
 
 }
 
-std::string path = "/home/ikozyris/programming/QML/cide/build/x86_64-linux-gnu/app/install/";
+std::string path = "/home/user/cide/build/x86_64-linux-gnu/app/install/";
 std::string file = std::string(path) + "file.c";
 
 void Example::save(QString code) {
