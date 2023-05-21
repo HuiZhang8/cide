@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cide.ikozyris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-21 17:47+0000\n"
+"POT-Creation-Date: 2023-05-21 19:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,16 +45,20 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../qml/Settings.qml:26
+#: ../qml/Settings.qml:28
 msgid "Language: "
 msgstr ""
 
-#: ../qml/Settings.qml:28
+#: ../qml/Settings.qml:30
 msgid "C "
 msgstr ""
 
-#: ../qml/Settings.qml:29
+#: ../qml/Settings.qml:31
 msgid "C++ "
+msgstr ""
+
+#: ../qml/Settings.qml:39
+msgid "Standard version: "
 msgstr ""
 
 #: cide.desktop.in.h:1

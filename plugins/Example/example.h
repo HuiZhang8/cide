@@ -36,7 +36,7 @@ public:
     ~Example() = default;
 
     Q_INVOKABLE void save(int lang, QString code);
-    Q_INVOKABLE void compile(int lang, QString std);
+    Q_INVOKABLE void compile(int lang, int std);
     //Q_INVOKABLE static void run();
     Q_INVOKABLE void runAsync(QString args);
     Q_INVOKABLE QString getOutput();

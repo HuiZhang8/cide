@@ -33,7 +33,7 @@ Page {
                     iconName: "settings"
                     text: i18n.tr("Compile")
                     onTriggered: {
-                        Example.compile(Options.compiler, Options.standard);
+                        Example.compile(Options.compiler, Options.std);
                     }
                 },
                 Action {

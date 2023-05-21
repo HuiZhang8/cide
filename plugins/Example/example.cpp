@@ -60,18 +60,19 @@ void Example::save(int lang, QString code)
 }
 
 // language: C/C++  |  std: c++11, gnu98 etc.
-void Example::compile(int lang, QString std)
+void Example::compile(int lang, int std)
 {
     std::string command;
     std::string file = std::string(path);
 
     if (lang == 0) { // C
         file.append("file.c");
-        command = std::string("gcc ") + file + " --std c11"; //+ std.toStdString();
+        command = std::string("gcc ") + file + " --std c" + std::to_string(std);
     } else { // C++
         file.append("file.cpp");
-        command = std::string("g++ ") + file + " --std c++11"; //+ std.toStdString();
+        command = std::string("g++ ") + file + " --std c++" + std::to_string(std);
     }
+
     if (system(command.c_str()) == 0)
         qDebug() << "Compiled succesfully!";
     else
@@ -107,7 +108,8 @@ void run()
 }
 
 void Example::runAsync(QString qargs)
-{   qDebug() << qargs;
+{
+    qDebug() << qargs;
     std::string temp = qargs.toStdString();
     args.push_back(temp);
     //qDebug() << "Starting Async";
