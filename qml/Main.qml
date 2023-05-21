@@ -16,11 +16,8 @@
 
 import QtQuick 2.7
 import Lomiri.Components 1.3
-//import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
-
-import Example 1.0
 
 MainView {
     id: root
@@ -28,51 +25,11 @@ MainView {
     applicationName: 'cide.ikozyris'
     automaticOrientation: true
 
-    width: units.gu(45)
+    width: units.gu(75)
     height: units.gu(75)
 
-    Page {
-        anchors.fill: parent
-
-        header: PageHeader {
-            id: header
-            title: i18n.tr('C IDE')
-            trailingActionBar {
-                actions: [
-                    Action {
-                        iconName: "send"
-                        text: i18n.tr("Run")
-                        onTriggered: {
-                            Example.run();
-                        }
-                    },
-                    Action {
-                        iconName: "settings"
-                        text: i18n.tr("Compile")
-                        onTriggered: {
-                            Example.compile();
-                        }
-                    },
-                    Action {
-                        iconName: "document-save"
-                        text: i18n.tr("Save")
-                        onTriggered: {
-                            Example.save(code.text);
-                        }
-                    }
-                ]
-            }
-        }
-
-        TextArea {
-            id: code
-            anchors {
-                top: header.bottom
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-            }
-            placeholderText: "Enter Code"
-        }
+    PageStack {
+        id: pStack
+        Component.onCompleted: pStack.push(Qt.resolvedUrl("CodeEditor.qml"))
     }
 }

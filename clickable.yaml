@@ -4,3 +4,4 @@ kill: cide
 framework: ubuntu-sdk-20.04
 dependencies_target:
 - 'gcc'
+- 'libpstreams-dev'

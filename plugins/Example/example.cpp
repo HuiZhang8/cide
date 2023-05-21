@@ -17,38 +17,112 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QString>
+#include <QVector>
 
 #include "example.h"
 #include <iostream>
 #include <stdlib.h>
-#include <stdlib.h>
+#include <vector>
 #include <string.h>
+#include <future> // for async calls
+#include <sstream>
+#include <unistd.h>
 
-Example::Example() {
+#include <thread>
 
+#include <pstreams/pstream.h>
+
+Example::Example()
+{
 }
 
-std::string path = "/home/user/cide/build/x86_64-linux-gnu/app/install/";
-std::string file = std::string(path) + "file.c";
+QString appDataPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/";
+//appDataPath.append("/");
+QByteArray ba = appDataPath.toLocal8Bit();
+char *path = ba.data();
+QString output;
+std::vector<std::string> args;
 
-void Example::save(QString code) {
-    QString appDataPath = code;
-    QByteArray ba = appDataPath.toLocal8Bit();
+void Example::save(int lang, QString code)
+{
+    std::string file = std::string(path);
+    QByteArray ba = code.toLocal8Bit();
     char *content = ba.data();
 
+    if (lang == 0) // C
+        file.append("file.c");
+    else // C++
+        file.append("file.cpp");
+
     std::FILE *fp = fopen(file.c_str(), "w");
-    std::fprintf(fp,content);
+    std::fprintf(fp, "%s", content);
     std::fclose(fp);
 }
-void Example::compile() {
 
-    //QString appDataPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-    //QByteArray ba = appDataPath.toLocal8Bit();
-    //char *path = ba.data();
-    std::string command = std::string("gcc ") + file + " -O2"; 
-    std::system(command.c_str());
+// language: C/C++  |  std: c++11, gnu98 etc.
+void Example::compile(int lang, QString std)
+{
+    std::string command;
+    std::string file = std::string(path);
+
+    if (lang == 0) { // C
+        file.append("file.c");
+        command = std::string("gcc ") + file + " --std c11"; //+ std.toStdString();
+    } else { // C++
+        file.append("file.cpp");
+        command = std::string("g++ ") + file + " --std c++11"; //+ std.toStdString();
+    }
+    if (system(command.c_str()) == 0)
+        qDebug() << "Compiled succesfully!";
+    else
+        qDebug() << "Failed to compile";
 }
 
-void Example::run() {
-    std::system("./a.out");
+
+void run()
+{
+    //qDebug() << "Async started";
+    output.clear();
+    std::string str;
+    redi::ipstream in("./a.out", args);
+    //sleep(5);
+    //std::string nl = std::endl;
+
+    QString newline = QString::fromLocal8Bit("\n"); //QString::fromStdString(nl);
+
+    while (std::getline(in, str)) {
+        //std::cout << str;
+        QString temp = QString::fromStdString(str);
+        //qDebug() << "started to read";
+        if (in.peek() != EOF) {
+            //std::cout << std::endl;
+            temp.append(newline);
+            //qDebug() << "searching";
+        }
+        output.push_back(temp);
+        //qDebug() << "added line";
+    }
+    qDebug() << "Process ended";
+    args.clear();
 }
+
+void Example::runAsync(QString qargs)
+{   qDebug() << qargs;
+    std::string temp = qargs.toStdString();
+    args.push_back(temp);
+    //qDebug() << "Starting Async";
+    std::thread t(run);
+    t.detach();
+    //qDebug() << "Async is running";
+}
+
+QString Example::getOutput()
+{
+    //return QString::fromStdString(output);
+    return output;
+}
+/*
+void Example::sendInput()
+{
+    in.write()
+}*/

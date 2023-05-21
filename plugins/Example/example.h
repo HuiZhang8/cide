@@ -18,17 +18,28 @@
 #define EXAMPLE_H
 
 #include <QObject>
+#include <QString>
+/*
+#include <QVector>
+#include <QtCore>
+#include <qt5/QtCore/QVector>
+#include <qvector.h>
+#include "qt5/QtCore/qvector.h"
+*/
 
-class Example: public QObject {
+class Example: public QObject
+{
     Q_OBJECT
 
 public:
     Example();
     ~Example() = default;
 
-    Q_INVOKABLE void save(QString);
-    Q_INVOKABLE void compile();
-    Q_INVOKABLE void run();
+    Q_INVOKABLE void save(int lang, QString code);
+    Q_INVOKABLE void compile(int lang, QString std);
+    //Q_INVOKABLE static void run();
+    Q_INVOKABLE void runAsync(QString args);
+    Q_INVOKABLE QString getOutput();
 };
 
 #endif

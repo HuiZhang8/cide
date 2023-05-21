@@ -20,6 +20,7 @@
 #include <QString>
 #include <QQuickView>
 #include <QStandardPaths>
+#include "plugins/Example/example.h"
 
 int main(int argc, char *argv[])
 {
@@ -28,10 +29,8 @@ int main(int argc, char *argv[])
 
     qDebug() << "Starting app from main.cpp";
     
-    QString appDataPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-    
     QQuickView *view = new QQuickView();
-    view->setSource(QUrl("qrc:/Main.qml"));
+    view->setSource(QUrl("qrc:/qml/Main.qml"));
     view->setResizeMode(QQuickView::SizeRootObjectToView);
     view->show();
 

@@ -1,5 +1,10 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/qml">
+        <file>CodeEditor.qml</file>
+        <file>InputOutput.qml</file>
         <file>Main.qml</file>
+        <file>qmldir</file>
+        <file>Settings.qml</file>
+        <file>Singleton.qml</file>
     </qresource>
 </RCC>

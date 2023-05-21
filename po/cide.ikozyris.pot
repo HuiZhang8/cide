@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cide.ikozyris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-19 16:42+0000\n"
+"POT-Creation-Date: 2023-05-21 17:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:39 cide.desktop.in.h:1
-msgid "C IDE"
+#: ../qml/CodeEditor.qml:14
+msgid "C/C++ IDE"
 msgstr ""
 
-#: ../qml/Main.qml:44
+#: ../qml/CodeEditor.qml:21
+msgid "Code Editor"
+msgstr ""
+
+#: ../qml/CodeEditor.qml:21
+msgid "Input/Output"
+msgstr ""
+
+#: ../qml/CodeEditor.qml:21
+msgid "Settings"
+msgstr ""
+
+#: ../qml/CodeEditor.qml:27
 msgid "Run"
 msgstr ""
 
-#: ../qml/Main.qml:51
+#: ../qml/CodeEditor.qml:34
 msgid "Compile"
 msgstr ""
 
-#: ../qml/Main.qml:58
+#: ../qml/CodeEditor.qml:41
 msgid "Save"
+msgstr ""
+
+#: ../qml/Settings.qml:26
+msgid "Language: "
+msgstr ""
+
+#: ../qml/Settings.qml:28
+msgid "C "
+msgstr ""
+
+#: ../qml/Settings.qml:29
+msgid "C++ "
+msgstr ""
+
+#: cide.desktop.in.h:1
+msgid "C IDE"
 msgstr ""
