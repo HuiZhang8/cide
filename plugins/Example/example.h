@@ -35,10 +35,10 @@ public:
     Example();
     ~Example() = default;
 
-    Q_INVOKABLE void save(int lang, QString code);
-    Q_INVOKABLE void compile(int lang, int std);
+    Q_INVOKABLE void save(int, QString);
+    Q_INVOKABLE int compile(int, int);
     //Q_INVOKABLE static void run();
-    Q_INVOKABLE void runAsync(QString args);
+    Q_INVOKABLE void runAsync(QString);
     Q_INVOKABLE QString getOutput();
 };
 

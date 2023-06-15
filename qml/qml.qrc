@@ -6,5 +6,6 @@
         <file>qmldir</file>
         <file>Settings.qml</file>
         <file>Singleton.qml</file>
+        <file>Toast.qml</file>
     </qresource>
 </RCC>

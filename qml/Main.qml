@@ -19,6 +19,8 @@ import Lomiri.Components 1.3
 import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
 
+import "qrc:/qml/"
+
 MainView {
     id: root
     objectName: 'mainView'
@@ -31,5 +33,9 @@ MainView {
     PageStack {
         id: pStack
         Component.onCompleted: pStack.push(Qt.resolvedUrl("CodeEditor.qml"))
+    }
+
+    Toast {
+        id: toast
     }
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cide.ikozyris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-21 19:18+0000\n"
+"POT-Creation-Date: 2023-06-15 10:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/CodeEditor.qml:14
+#: ../qml/CodeEditor.qml:13
 msgid "C/C++ IDE"
 msgstr ""
 
-#: ../qml/CodeEditor.qml:21
+#: ../qml/CodeEditor.qml:20
 msgid "Code Editor"
 msgstr ""
 
-#: ../qml/CodeEditor.qml:21
+#: ../qml/CodeEditor.qml:20
 msgid "Input/Output"
 msgstr ""
 
-#: ../qml/CodeEditor.qml:21
+#: ../qml/CodeEditor.qml:20
 msgid "Settings"
 msgstr ""
 
-#: ../qml/CodeEditor.qml:27
+#: ../qml/CodeEditor.qml:26
 msgid "Run"
 msgstr ""
 
@@ -41,8 +41,44 @@ msgstr ""
 msgid "Compile"
 msgstr ""
 
-#: ../qml/CodeEditor.qml:41
+#: ../qml/CodeEditor.qml:37
+msgid "Your code is garbage! However, the error is in the logs."
+msgstr ""
+
+#: ../qml/CodeEditor.qml:39
+msgid "Your code compiled!"
+msgstr ""
+
+#: ../qml/CodeEditor.qml:45
 msgid "Save"
+msgstr ""
+
+#: ../qml/CodeEditor.qml:69
+msgid "Enter Code"
+msgstr ""
+
+#: ../qml/InputOutput.qml:13
+msgid "Output"
+msgstr ""
+
+#: ../qml/InputOutput.qml:16
+msgid "Get Output"
+msgstr ""
+
+#: ../qml/InputOutput.qml:16
+msgid "Update Output"
+msgstr ""
+
+#: ../qml/InputOutput.qml:34
+msgid "Input"
+msgstr ""
+
+#: ../qml/Settings.qml:10
+msgid "Command line arguments (Experimental):"
+msgstr ""
+
+#: ../qml/Settings.qml:21
+msgid "Set"
 msgstr ""
 
 #: ../qml/Settings.qml:28

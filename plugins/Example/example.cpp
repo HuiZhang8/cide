@@ -23,24 +23,26 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
-#include <string.h>
+#include <string>
 #include <future> // for async calls
 #include <sstream>
 #include <unistd.h>
 
 #include <thread>
 
-#include <pstreams/pstream.h>
+#include "pstream.h"
 
 Example::Example()
-{
-}
+{}
 
+// writable location
 QString appDataPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/";
 //appDataPath.append("/");
 QByteArray ba = appDataPath.toLocal8Bit();
 char *path = ba.data();
+// output to be returned to QML
 QString output;
+// commadn line arguments for program
 std::vector<std::string> args;
 
 void Example::save(int lang, QString code)
@@ -60,7 +62,7 @@ void Example::save(int lang, QString code)
 }
 
 // language: C/C++  |  std: c++11, gnu98 etc.
-void Example::compile(int lang, int std)
+int Example::compile(int lang, int std)
 {
     std::string command;
     std::string file = std::string(path);
@@ -70,13 +72,19 @@ void Example::compile(int lang, int std)
         command = std::string("gcc ") + file + " --std c" + std::to_string(std);
     } else { // C++
         file.append("file.cpp");
-        command = std::string("g++ ") + file + " --std c++" + std::to_string(std);
+        command = std::string("g++ ")
+                                      +  file
+                                      +  " --std c++"
+                                      +  std::to_string(std);
     }
 
-    if (system(command.c_str()) == 0)
+    if (system(command.c_str()) == 0) {
         qDebug() << "Compiled succesfully!";
-    else
+        return 0;
+    } else {
         qDebug() << "Failed to compile";
+        return -1;
+    }
 }
 
 
@@ -85,9 +93,8 @@ void run()
     //qDebug() << "Async started";
     output.clear();
     std::string str;
+
     redi::ipstream in("./a.out", args);
-    //sleep(5);
-    //std::string nl = std::endl;
 
     QString newline = QString::fromLocal8Bit("\n"); //QString::fromStdString(nl);
 
@@ -109,7 +116,7 @@ void run()
 
 void Example::runAsync(QString qargs)
 {
-    qDebug() << qargs;
+    //qDebug() << qargs;
     std::string temp = qargs.toStdString();
     args.push_back(temp);
     //qDebug() << "Starting Async";
@@ -124,7 +131,12 @@ QString Example::getOutput()
     return output;
 }
 /*
-void Example::sendInput()
+void Example::sendInput(QString input)
 {
-    in.write()
+    QByteArray ba = input.toLocal8Bit();
+    char *instr = ba.data();
+
+    // TODO: the "in" stream is not a global variable
+    // this function cannot use it
+    in.write(instr)
 }*/

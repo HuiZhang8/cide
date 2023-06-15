@@ -10,10 +10,10 @@ Page {
 		id: outLabel
 		anchors.top: parent.top
 		fontSize: "large"
-		text: "Output"
+		text: i18n.tr("Output")
 	}
 	Button {
-		text: outText.text != "" ? "Update Output" : "Get Output"
+		text: outText.text != "" ? i18n.tr("Update Output") : i18n.tr("Get Output")
 		anchors {
 			top: parent.top
 			right: parent.right
@@ -31,7 +31,7 @@ Page {
 		id: inLabel
 		anchors.bottom: outText.bottom
 		fontSize: "large"
-		text: "Input"
+		text: i18n.tr("Input")
 	}
 	Text {
 		id: inText

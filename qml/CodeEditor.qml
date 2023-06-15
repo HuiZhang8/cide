@@ -3,7 +3,6 @@ import QtQuick.Controls 2.2 as QQC2
 import Lomiri.Components 1.3
 
 import Example 1.0
-import "qrc:/qml/"
 
 Page {
 	id: codeEditor
@@ -28,13 +27,18 @@ Page {
                     onTriggered: {
                         Example.runAsync(Options.argv);
                     }
+                    shortcut: "Ctrl+R"
                 },
                 Action {
                     iconName: "settings"
                     text: i18n.tr("Compile")
                     onTriggered: {
-                        Example.compile(Options.compiler, Options.std);
+                        if (Example.compile(Options.compiler, Options.std) === -1)
+                            toast.show(i18n.tr("Your code is garbage! However, the error is in the logs."), 5000)
+                        else
+                            toast.show(i18n.tr("Your code compiled!"))
                     }
+                    shortcut: "Ctrl+B"
                 },
                 Action {
                     iconName: "document-save"
@@ -43,6 +47,7 @@ Page {
                         Example.save(Options.lang, code.text);
                         //console.log(code.text);
                     }
+                    shortcut: "Ctrl+S"
                 }
             ]
         }
@@ -61,7 +66,7 @@ Page {
 				font.bold: true
 				font.family: "Consolas"
 				wrapMode: Text.Wrap
-				placeholderText: "Enter Code"
+				placeholderText: i18n.tr("Enter Code")
 			}
 		}
 		InputOutput {

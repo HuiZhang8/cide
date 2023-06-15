@@ -7,7 +7,7 @@ Page {
 	Label {
 		id: args
 		anchors.top: parent.top
-		text: "Command line arguments: (Experimental)"
+		text: i18n.tr("Command line arguments (Experimental):")
 	}
 	TextField {
 		id: argsText
@@ -18,7 +18,7 @@ Page {
 	Button {
 		anchors.top: args.bottom
 		anchors.right: parent.right
-		text: "Set"
+		text: i18n.tr("Set")
 		onClicked: Options.argv = argsText.text
 	}
 
